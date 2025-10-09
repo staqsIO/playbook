@@ -48,7 +48,7 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/start-project"
-              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-black bg-[#FF8A3D] hover:bg-[#FF7A2D] transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
             >
               START A PROJECT
             </Link>
@@ -86,7 +86,7 @@ export function Navbar() {
             ))}
             <Link
               href="/start-project"
-              className="block w-full text-center px-6 py-3 text-sm font-medium text-black bg-[#FF8A3D] hover:bg-[#FF7A2D] transition-colors"
+              className="block w-full text-center px-6 py-3 text-sm font-medium text-primary-foreground bg-primary hover:bg-primary/90 transition-colors"
               onClick={() => setMobileMenuOpen(false)}
             >
               START A PROJECT

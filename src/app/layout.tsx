@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Anton, Antonio, DM_Sans } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -13,6 +14,23 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const anton = Anton({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-anton",
+});
+
+const antonio = Antonio({
+  subsets: ["latin"],
+  variable: "--font-antonio",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-dm-sans",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Playbook - Next.js 14 + React 18 + TypeScript",
   description: "Modern Next.js application with React Bits support",
@@ -24,9 +42,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" className={`dark ${anton.variable} ${antonio.variable} ${dmSans.variable}`}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
       </body>
