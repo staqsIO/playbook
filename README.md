@@ -29,6 +29,10 @@ playbook/
 │   ├── hooks/              # Custom React hooks
 │   └── types/              # TypeScript type definitions
 ├── public/                 # Static assets
+│   ├── images/             # Images (PNG, JPG, WebP, SVG)
+│   ├── icons/              # Icons and small graphics
+│   ├── fonts/              # Custom fonts
+│   └── videos/             # Video files
 └── package.json
 ```
 
@@ -105,6 +109,44 @@ import { cn } from "@/lib/utils";
 
 <div className={cn("base-class", condition && "conditional-class")} />
 ```
+
+## Static Assets
+
+### Storing Assets
+
+Place your static assets in the `/public` directory:
+
+```
+public/
+├── images/     # Store all images here
+├── icons/      # SVG icons and small graphics
+├── fonts/      # Custom font files
+└── videos/     # Video files
+```
+
+### Using Images
+
+**Recommended**: Use Next.js Image component for automatic optimization:
+
+```tsx
+import Image from "next/image";
+
+<Image 
+  src="/images/logo.png" 
+  alt="Logo" 
+  width={200} 
+  height={100}
+/>
+```
+
+**For background images**:
+```tsx
+<div style={{ backgroundImage: "url('/images/bg.jpg')" }} />
+```
+
+**Note**: Files in `/public` are served from root. Use `/images/photo.jpg`, not `/public/images/photo.jpg`
+
+📖 See `/public/README.md` for detailed asset management guide and examples.
 
 ## Features
 

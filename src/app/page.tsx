@@ -1,6 +1,10 @@
+import { Navbar } from "@/components/layout";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-8">
+    <>
+      <Navbar />
+      <div className="flex min-h-screen flex-col items-center justify-center p-8 pt-28">
       <main className="flex flex-col items-center gap-8 text-center max-w-2xl">
         <div className="space-y-4">
           <h1 className="text-4xl font-bold tracking-tight sm:text-6xl">
@@ -65,6 +69,7 @@ export default function Home() {
       <footer className="mt-16 text-center text-sm text-muted-foreground">
         <p>Built with Next.js 14 • React 18 • TypeScript • Tailwind CSS</p>
       </footer>
-    </div>
+      </div>
+    </>
   );
 }
