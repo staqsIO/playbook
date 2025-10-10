@@ -22,6 +22,7 @@ const anton = Anton({
 
 const antonio = Antonio({
   subsets: ["latin"],
+  weight: "variable",
   variable: "--font-antonio",
 });
 

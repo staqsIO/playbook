@@ -4,4 +4,5 @@ export { FadeIn } from "./fade-in";
 export { GradientText } from "./gradient-text";
 export { SplitText } from "./split-text";
 export { TextShimmer } from "./text-shimmer";
+export { default as VariableProximity } from "./variable-proximity";
 
