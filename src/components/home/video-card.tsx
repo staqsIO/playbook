@@ -43,8 +43,8 @@ export function VideoCard({
           scale: isHovered ? 0.9 : 1,
         }}
         transition={{
-          duration: 0.6,
-          delay: isHovered ? 0.4 : 0.5,
+          duration: 0.4,
+          delay: isHovered ? 0.3 : 0.4,
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
@@ -65,47 +65,32 @@ export function VideoCard({
       <AnimatePresence>
         {!isHovered && (
           <motion.div
-            className="absolute bottom-8 left-8 right-8"
+            className="absolute bottom-8 left-0"
             style={{ 
               background: 'rgba(12, 15, 18, 0.80)',
               backdropFilter: 'blur(6px)'
             }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 1.0 } }}
-            exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.3, delay: 0.7 } }}
+            exit={{ opacity: 0, y: 20, transition: { duration: 0.15 } }}
           >
-            <div className="flex items-center gap-8 p-8">
+            <div className="flex items-center gap-8 p-4">
               {/* Number */}
               <div className="flex-shrink-0">
-                <span className="font-antonio text-8xl text-white/80 leading-none">
+                <span className="font-[100] text-[74px] text-[#F9FAFB] leading-none">
                   {number}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="flex-1">
-                <p className="text-primary text-sm font-medium tracking-wider uppercase mb-2">
+              <div className="flex-1 whitespace-nowrap">
+                <p className="text-primary text-[14px] font-[300] tracking-wider uppercase">
                   {category}
                 </p>
-                <h3 className="font-antonio font-bold text-4xl text-white mb-3 leading-tight">
+                <h3 className="font-anton text-[32px] text-white">
                   {title}
-                  <br />
-                  {subtitle}
                 </h3>
-                <p className="text-white/80 text-base max-w-xl">
-                  {description}
-                </p>
               </div>
-
-              {/* CTA Button */}
-              <motion.button
-                className="flex-shrink-0 bg-primary hover:bg-primary/90 text-black font-bold px-12 py-4 text-lg transition-colors"
-                onClick={onCtaClick}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {ctaText}
-              </motion.button>
             </div>
           </motion.div>
         )}
@@ -119,7 +104,7 @@ export function VideoCard({
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.5, delay: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
+            transition={{ duration: 0.35, delay: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
             <div className="flex flex-col justify-between h-full p-12">
               {/* Top Content */}
@@ -129,11 +114,11 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.2,
+                    delay: 0.15,
                     type: "spring",
-                    stiffness: 200,
-                    damping: 8,
-                    mass: 0.8
+                    stiffness: 250,
+                    damping: 7,
+                    mass: 0.7
                   }}
                 >
                   <span className="font-antonio text-9xl text-white/80 leading-none block mb-8">
@@ -147,11 +132,11 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.3,
+                    delay: 0.22,
                     type: "spring",
-                    stiffness: 200,
-                    damping: 8,
-                    mass: 0.8
+                    stiffness: 250,
+                    damping: 7,
+                    mass: 0.7
                   }}
                 >
                   {category}
@@ -163,11 +148,11 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.35,
+                    delay: 0.27,
                     type: "spring",
-                    stiffness: 200,
-                    damping: 8,
-                    mass: 0.8
+                    stiffness: 250,
+                    damping: 7,
+                    mass: 0.7
                   }}
                 >
                   {title}
@@ -181,11 +166,11 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.4,
+                    delay: 0.32,
                     type: "spring",
-                    stiffness: 200,
-                    damping: 8,
-                    mass: 0.8
+                    stiffness: 250,
+                    damping: 7,
+                    mass: 0.7
                   }}
                 >
                   {description}
@@ -197,11 +182,11 @@ export function VideoCard({
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  delay: 0.45,
+                  delay: 0.37,
                   type: "spring",
-                  stiffness: 200,
-                  damping: 8,
-                  mass: 0.8
+                  stiffness: 250,
+                  damping: 7,
+                  mass: 0.7
                 }}
               >
                 <motion.button
