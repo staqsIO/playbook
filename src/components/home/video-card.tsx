@@ -44,7 +44,7 @@ export function VideoCard({
         }}
         transition={{
           duration: 0.6,
-          delay: isHovered ? 0 : 0.5,
+          delay: isHovered ? 0.4 : 0.5,
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
@@ -71,9 +71,8 @@ export function VideoCard({
               backdropFilter: 'blur(6px)'
             }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 20 }}
-            transition={{ duration: 0.4, delay: 0.6 }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.6 } }}
+            exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
           >
             <div className="flex items-center gap-8 p-8">
               {/* Number */}
@@ -120,7 +119,7 @@ export function VideoCard({
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.5, delay: 0.3, ease: [0.43, 0.13, 0.23, 0.96] }}
+            transition={{ duration: 0.5, delay: 0.7, ease: [0.43, 0.13, 0.23, 0.96] }}
           >
             <div className="flex flex-col justify-between h-full p-12">
               {/* Top Content */}
@@ -130,7 +129,7 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.4,
+                    delay: 0.2,
                     type: "spring",
                     stiffness: 200,
                     damping: 8,
@@ -148,7 +147,7 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.5,
+                    delay: 0.3,
                     type: "spring",
                     stiffness: 200,
                     damping: 8,
@@ -164,7 +163,7 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.55,
+                    delay: 0.35,
                     type: "spring",
                     stiffness: 200,
                     damping: 8,
@@ -182,7 +181,7 @@ export function VideoCard({
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ 
-                    delay: 0.6,
+                    delay: 0.4,
                     type: "spring",
                     stiffness: 200,
                     damping: 8,
@@ -198,7 +197,7 @@ export function VideoCard({
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ 
-                  delay: 0.65,
+                  delay: 0.45,
                   type: "spring",
                   stiffness: 200,
                   damping: 8,
