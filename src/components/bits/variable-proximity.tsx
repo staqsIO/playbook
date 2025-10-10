@@ -99,6 +99,15 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
     }));
   }, [fromFontVariationSettings, toFontVariationSettings]);
 
+  // Detect if we're reducing weight (inverted effect)
+  const isInvertedEffect = useMemo(() => {
+    const fromSettings = parseSettingsString(fromFontVariationSettings);
+    const toSettings = parseSettingsString(toFontVariationSettings);
+    const fromWeight = fromSettings.get('wght');
+    const toWeight = toSettings.get('wght');
+    return fromWeight && toWeight && fromWeight > toWeight;
+  }, [fromFontVariationSettings, toFontVariationSettings]);
+
   const calculateDistance = (x1: number, y1: number, x2: number, y2: number) =>
     Math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2);
 
@@ -189,14 +198,22 @@ const VariableProximity = forwardRef<HTMLSpanElement, VariableProximityProps>((p
       return 400; // default to normal
     };
     
-    // Calculate enhancement based on base weight
+    // Calculate weight range based on whether effect is inverted
     const getWeightRange = (baseWeight: number) => {
-      // Enhance by +200, but cap at 900 (max variable font weight)
-      const enhancedWeight = Math.min(baseWeight + 200, 900);
-      return {
-        from: `'wght' ${baseWeight}`,
-        to: `'wght' ${enhancedWeight}`
-      };
+      if (isInvertedEffect) {
+        // For inverted effect: keep base weight, reduce to 100 on hover
+        return {
+          from: `'wght' ${baseWeight}`,
+          to: `'wght' 100`
+        };
+      } else {
+        // Normal effect: enhance by +200, cap at 900
+        const enhancedWeight = Math.min(baseWeight + 200, 900);
+        return {
+          from: `'wght' ${baseWeight}`,
+          to: `'wght' ${enhancedWeight}`
+        };
+      }
     };
     
     const traverse = (node: Node, parentClasses?: string) => {

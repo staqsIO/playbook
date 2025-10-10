@@ -28,8 +28,8 @@ export function TextBanner({ title, subtitle }: TextBannerProps) {
             <VariableProximity
               label={getPlainText(title)}
               html={title}
-              fromFontVariationSettings="'wght' 100"
-              toFontVariationSettings="'wght' 900"
+              fromFontVariationSettings="'wght' 700"
+              toFontVariationSettings="'wght' 300"
               containerRef={containerRef}
               radius={150}
               falloff="exponential"
