@@ -24,7 +24,7 @@ export function SplitText({ text, className = "", delay = 0 }: SplitTextProps) {
       opacity: 1,
       y: 0,
       transition: {
-        type: "spring",
+        type: "spring" as const,
         damping: 12,
         stiffness: 200,
       },

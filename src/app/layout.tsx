@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Anton, Antonio, DM_Sans } from "next/font/google";
-import { LayoutBlur } from "@/components/layout/layout-blur";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -49,7 +48,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
         {children}
-        <LayoutBlur />
       </body>
     </html>
   );
