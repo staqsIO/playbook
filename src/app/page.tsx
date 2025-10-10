@@ -1,10 +1,10 @@
-import { IntroVideo, TextBanner } from "@/components/home";
-import { homePageConfig } from "@/config/home-config";
+import { IntroVideo, TextBanner, Brands } from "@/components/home";
+import { homePageConfig } from "../../config/home-config";
 
 export const dynamic = 'force-dynamic';
 
 export default function Home() {
-  const { introVideo, banners } = homePageConfig;
+  const { introVideo, brands, banners } = homePageConfig;
 
   return (
     <>
@@ -12,13 +12,19 @@ export default function Home() {
         videoSrc={introVideo.videoSrc}
         text={introVideo.text}
       />
-      {banners.map((banner) => (
-        <TextBanner
-          key={banner.id}
-          title={banner.title}
-          subtitle={banner.subtitle}
-        />
-      ))}
+      
+      <div className="mt-20">
+      <TextBanner
+        title={banners[0].title}
+        subtitle={banners[0].subtitle}
+      />
+      </div>
+      <Brands brands={brands.items} />
+      
+      <TextBanner
+        title={banners[1].title}
+        subtitle={banners[1].subtitle}
+      />
     </>
   );
 }

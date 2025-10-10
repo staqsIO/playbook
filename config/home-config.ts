@@ -12,6 +12,45 @@ export const homePageConfig = {
     text: 'STORIES That <span class="font-antonio font-normal">MOVE</span> CULTURE',
   },
 
+  // Brands Section
+  brands: {
+    title: "Brands We've Played With",
+    items: [
+      {
+        id: "adidas",
+        img: "/images/brands/adidas.png"
+      },
+      {
+        id: "electrolit",
+        img: "/images/brands/electrolit.png"
+      },
+      {
+        id: "xbox",
+        img: "/images/brands/xbox.png"
+      },
+      {
+        id: "newyork-liberty",
+        img: "/images/brands/newyork-liberty.png"
+      },
+      {
+        id: "lovb",
+        img: "/images/brands/lovb.png"
+      },
+      {
+        id: "spanx",
+        img: "/images/brands/spanx.png"
+      },
+      {
+        id: "lilly",
+        img: "/images/brands/lilly.png"
+      },
+      {
+        id: "whistle-sports",
+        img: "/images/brands/whistle-sports.png"
+      }
+    ]
+  },
+
   // Text Banners
   banners: [
     {
