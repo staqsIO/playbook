@@ -64,6 +64,20 @@ export const homePageConfig = {
       subtitle: "A curated look at projects where storytelling, creativity, and performance came together.",
     },
   ],
+
+  // Video Cards
+  videoCards: [
+    {
+      id: "electrolit-aryna",
+      number: "02",
+      category: "CAMPAIGN / PARTNERSHIP",
+      title: "ELECTROLIT ×",
+      subtitle: "ARYNA SABALENKA",
+      description: "A high-energy rumor-fueled social spot with tennis star Aryna Sabalenka, blending attitude, speed, and brand power at the U.S. Open.",
+      videoSrc: "/videos/intro.mp4",
+      ctaText: "MORE DETAILS",
+    },
+  ],
 } as const;
 
 // Type exports for better TypeScript support
