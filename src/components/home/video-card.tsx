@@ -71,7 +71,7 @@ export function VideoCard({
               backdropFilter: 'blur(6px)'
             }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 0.6 } }}
+            animate={{ opacity: 1, y: 0, transition: { duration: 0.4, delay: 1.0 } }}
             exit={{ opacity: 0, y: 20, transition: { duration: 0.2 } }}
           >
             <div className="flex items-center gap-8 p-8">
