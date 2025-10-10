@@ -41,7 +41,7 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
         </div>
 
         {/* Text and Scroll Indicator Container */}
-        <div className="w-full absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6">
+        <div className="w-full absolute bottom-[4rem] left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-6">
           {/* Text Above Scroll */}
           <h1 className="text-white text-center px-4 mb-8">
             <div 
@@ -55,10 +55,10 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
             <div className="w-8 h-12 rounded-full border-2 border-white/60 flex items-start justify-center p-2">
               <div className="w-1 h-3 bg-white/60 rounded-full animate-pulse" />
             </div>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+        </section>
+      );
+    }
 

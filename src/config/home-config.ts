@@ -16,12 +16,12 @@ export const homePageConfig = {
   banners: [
     {
       id: "brands",
-      title: '<span class="font-anton font-light text-[80px] uppercase">Brands We\'ve Played With</span>',
+      title: '<span class="font-anton font-[300] text-[80px] uppercase">Brands We\'ve Played With</span>',
       subtitle: "Collaboration with leading brands that shape culture and drive conversations.",
     },
     {
       id: "stories-in-motion",
-      title: '<span class="font-anton font-light text-[80px]">STORIES</span> <span class="font-light text-[72px]">in</span> <span class="font-anton font-light text-[80px]">MOTION</span>',
+      title: '<span class="font-anton font-[300] text-[80px]">STORIES</span> <span class="font-light text-[72px]">in</span> <span class="font-anton font-[300] text-[80px]">MOTION</span>',
       subtitle: "A curated look at projects where storytelling, creativity, and performance came together.",
     },
   ],
