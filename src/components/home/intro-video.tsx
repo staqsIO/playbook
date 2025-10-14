@@ -18,7 +18,11 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
         loop
         muted
         playsInline
+        preload="metadata"
+        poster="/images/posters/intro.jpg"
       >
+        {/* WebM provides better compression (30-50% smaller) */}
+        <source src={videoSrc.replace('.mp4', '.webm')} type="video/webm" />
         <source src={videoSrc} type="video/mp4" />
         Your browser does not support the video tag.
       </video>

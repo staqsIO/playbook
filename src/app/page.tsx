@@ -1,8 +1,6 @@
 import { IntroVideo, TextBanner, Brands, VideoCard } from "@/components/home";
 import { homePageConfig } from "../../config/home-config";
 
-export const dynamic = "force-dynamic";
-
 export default function Home() {
   const { introVideo, brands, banners, videoCards } = homePageConfig;
 

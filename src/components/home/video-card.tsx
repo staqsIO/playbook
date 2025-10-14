@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LazyVideo } from "@/components/ui/lazy-video";
 
 export interface VideoCardProps {
   number: string;
@@ -51,15 +52,17 @@ export function VideoCard({
           ease: [0.43, 0.13, 0.23, 0.96],
         }}
       >
-        <video
+        <LazyVideo
+          videoSrc={videoSrc}
           className="w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
-        >
-          <source src={videoSrc} type="video/mp4" />
-        </video>
+          preload="metadata"
+          poster={`/images/posters/${videoSrc.split('/').pop()?.replace('.mp4', '.jpg')}`}
+          rootMargin="300px"
+        />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/30" />
       </motion.div>
