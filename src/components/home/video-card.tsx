@@ -41,10 +41,10 @@ export function VideoCard({
     >
       {/* Video Container */}
       <motion.div
-        className="absolute inset-0"
+        className="absolute right-0 bottom-0"
         animate={{
-          x: isHovered ? "35%" : "0%",
-          scale: isHovered ? 0.9 : 1,
+          width: isHovered ? "60%" : "100%",
+          height: isHovered ? "95%" : "100%",
         }}
         transition={{
           duration: 0.4,
@@ -54,7 +54,7 @@ export function VideoCard({
       >
         <LazyVideo
           videoSrc={videoSrc}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover center"
           autoPlay
           loop
           muted
