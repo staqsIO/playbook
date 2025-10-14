@@ -59,9 +59,8 @@ export function VideoCard({
           loop
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           poster={`/images/posters/${videoSrc.split('/').pop()?.replace('.mp4', '.jpg')}`}
-          rootMargin="300px"
         />
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/30" />

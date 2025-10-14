@@ -26,52 +26,19 @@ export function LazyVideo({
   rootMargin = "200px",
 }: LazyVideoProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isInView, setIsInView] = useState(false);
-  const [hasLoaded, setHasLoaded] = useState(false);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasLoaded) {
-          setIsInView(true);
-          setHasLoaded(true);
-        }
-      },
-      {
-        rootMargin, // Start loading before entering viewport
-        threshold: 0.1,
-      }
-    );
-
-    if (videoRef.current) {
-      observer.observe(videoRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [hasLoaded, rootMargin]);
-
-  // Get WebM version if it exists (better compression)
-  const webmSrc = videoSrc.replace('.mp4', '.webm');
-  
   return (
     <video
       ref={videoRef}
       className={className}
-      autoPlay={autoPlay && isInView}
+      autoPlay={autoPlay}
       loop={loop}
       muted={muted}
       playsInline={playsInline}
-      preload={isInView ? preload : "none"}
+      preload={preload}
       poster={poster}
+      src={videoSrc}
     >
-      {isInView && (
-        <>
-          {/* Try WebM first (better compression) */}
-          <source src={webmSrc} type="video/webm" />
-          {/* Fallback to MP4 */}
-          <source src={videoSrc} type="video/mp4" />
-        </>
-      )}
       Your browser does not support the video tag.
     </video>
   );
