@@ -20,7 +20,7 @@ export function TextBanner({ title, subtitle }: TextBannerProps) {
   };
 
   return (
-    <section className="w-full bg-background py-24 px-4 flex items-center justify-center">
+    <section className="w-full bg-background py-10 px-4 flex items-center justify-center">
       <div className="max-w-6xl w-full text-center">
         {/* Title with Variable Proximity Effect */}
         <div ref={containerRef} className="mb-8">

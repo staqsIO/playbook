@@ -2,35 +2,38 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
 
 export interface VideoCardProps {
   number: string;
   category: string;
   title: string;
-  subtitle: string;
   description: string;
   videoSrc: string;
   ctaText?: string;
   onCtaClick?: () => void;
+  fullWidth?: boolean;
+  color?: "primary" | "secondary";
 }
 
 export function VideoCard({
   number,
   category,
   title,
-  subtitle,
   description,
   videoSrc,
   ctaText = "MORE DETAILS",
   onCtaClick,
+  fullWidth = false,
+  color = "primary",
 }: VideoCardProps) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <motion.section
-      className="relative w-full h-[600px] overflow-hidden cursor-pointer"
-      style={{ background: 'rgba(12, 15, 18, 0.80)' }}
+      className={`relative w-full h-[600px] overflow-hidden cursor-pointer ${
+        !fullWidth ? "container mx-auto" : ""
+      }`}
+      style={{ background: "rgba(12, 15, 18, 0.80)" }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       initial={false}
@@ -39,7 +42,7 @@ export function VideoCard({
       <motion.div
         className="absolute inset-0"
         animate={{
-          x: isHovered ? "40%" : "0%",
+          x: isHovered ? "35%" : "0%",
           scale: isHovered ? 0.9 : 1,
         }}
         transition={{
@@ -66,12 +69,16 @@ export function VideoCard({
         {!isHovered && (
           <motion.div
             className="absolute bottom-8 left-0"
-            style={{ 
-              background: 'rgba(12, 15, 18, 0.80)',
-              backdropFilter: 'blur(6px)'
+            style={{
+              background: "rgba(12, 15, 18, 0.80)",
+              backdropFilter: "blur(6px)",
             }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0, transition: { duration: 0.3, delay: 0.7 } }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              transition: { duration: 0.3, delay: 0.7 },
+            }}
             exit={{ opacity: 0, y: 20, transition: { duration: 0.15 } }}
           >
             <div className="flex items-center gap-8 p-4">
@@ -84,12 +91,10 @@ export function VideoCard({
 
               {/* Content */}
               <div className="flex-1 whitespace-nowrap">
-                <p className="text-primary text-[14px] font-[300] tracking-wider uppercase">
+                <p className={`${color === "primary" ? "text-primary" : "text-secondary"} text-[14px] font-[300] tracking-wider uppercase`}>
                   {category}
                 </p>
-                <h3 className="font-anton text-[32px] text-white">
-                  {title}
-                </h3>
+                <h3 className="font-anton text-[32px] text-white">{title}</h3>
               </div>
             </div>
           </motion.div>
@@ -104,39 +109,43 @@ export function VideoCard({
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 100 }}
-            transition={{ duration: 0.35, delay: 0.5, ease: [0.43, 0.13, 0.23, 0.96] }}
+            transition={{
+              duration: 0.35,
+              delay: 0.5,
+              ease: [0.43, 0.13, 0.23, 0.96],
+            }}
           >
-            <div className="flex flex-col justify-between h-full p-12">
+            <div className="flex flex-col justify-end h-full pt-2 pb-8 pl-12 pr-4">
               {/* Top Content */}
               <div>
                 {/* Number */}
                 <motion.div
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
+                  transition={{
                     delay: 0.15,
                     type: "spring",
                     stiffness: 250,
                     damping: 7,
-                    mass: 0.7
+                    mass: 0.7,
                   }}
                 >
-                  <span className="font-antonio text-9xl text-white/80 leading-none block mb-8">
+                  <span className="text-[64px] font-[100] text-[#F9FAFB] block">
                     {number}
                   </span>
                 </motion.div>
 
                 {/* Category */}
                 <motion.p
-                  className="text-primary text-sm font-medium tracking-wider uppercase mb-4"
+                  className={`${color === "primary" ? "text-primary" : "text-secondary"} text-[16px] font-[300] tracking-wider uppercase mb-2`}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
+                  transition={{
                     delay: 0.22,
                     type: "spring",
                     stiffness: 250,
                     damping: 7,
-                    mass: 0.7
+                    mass: 0.7,
                   }}
                 >
                   {category}
@@ -144,33 +153,31 @@ export function VideoCard({
 
                 {/* Title */}
                 <motion.h3
-                  className="font-antonio font-bold text-5xl text-white mb-6 leading-tight"
+                  className="font-anton font-[400] text-[48px] text-white mb-2 leading-tight"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
+                  transition={{
                     delay: 0.27,
                     type: "spring",
                     stiffness: 250,
                     damping: 7,
-                    mass: 0.7
+                    mass: 0.7,
                   }}
                 >
                   {title}
-                  <br />
-                  {subtitle}
                 </motion.h3>
 
                 {/* Description */}
                 <motion.p
-                  className="text-white/80 text-lg leading-relaxed"
+                  className="font-[300] text-white text-[20px] leading-relaxed mb-8"
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ 
+                  transition={{
                     delay: 0.32,
                     type: "spring",
                     stiffness: 250,
                     damping: 7,
-                    mass: 0.7
+                    mass: 0.7,
                   }}
                 >
                   {description}
@@ -181,16 +188,16 @@ export function VideoCard({
               <motion.div
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ 
+                transition={{
                   delay: 0.37,
                   type: "spring",
                   stiffness: 250,
                   damping: 7,
-                  mass: 0.7
+                  mass: 0.7,
                 }}
               >
                 <motion.button
-                  className="w-full bg-primary hover:bg-primary/90 text-black font-bold px-12 py-5 text-lg transition-colors"
+                  className={`w-full ${color === "primary" ? "bg-primary hover:bg-primary/90" : "bg-secondary hover:bg-secondary/90"} text-[#0C0F12] font-[400] px-12 py-5 text-[20px] transition-colors`}
                   onClick={onCtaClick}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -205,4 +212,3 @@ export function VideoCard({
     </motion.section>
   );
 }
-
