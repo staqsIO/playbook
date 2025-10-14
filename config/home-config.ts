@@ -103,6 +103,15 @@ export const homePageConfig = {
       videoSrc: "/videos/whistle.mp4",
       ctaText: "MORE DETAILS",
     },
+    {
+      id: "pancakes",
+      number: "05",
+      category: "ORIGINAL CONTENT",
+      title: "Serving Pancakes",
+      description: "Playbook developed and branded the first-ever LOVB podcast, later picked up by iHeartMedia with 25+ additional episodes.",
+      videoSrc: "/videos/pancakes.mp4",
+      ctaText: "MORE DETAILS",
+    },
   ],
 } as const;
 

@@ -68,6 +68,19 @@ export default function Home() {
           ctaText={videoCards[3].ctaText}
         />
       </div>
+
+      {/* Pancakes Card */}
+      <div className="mb-[120px]">
+        <VideoCard
+          number={videoCards[4].number}
+          category={videoCards[4].category}
+          title={videoCards[4].title}
+          description={videoCards[4].description}
+          videoSrc={videoCards[4].videoSrc}
+          ctaText={videoCards[4].ctaText}
+          color="secondary"
+        />
+      </div>
     </>
   );
 }
