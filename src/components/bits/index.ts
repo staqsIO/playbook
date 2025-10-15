@@ -1,6 +1,7 @@
 export { AnimatedCard } from "./animated-card";
 export { ClickSpark } from "./click-spark";
 export { FadeIn } from "./fade-in";
+export { FadeContent } from "./fade-content";
 export { FlowingMenu } from "./flowing-menu";
 export { GradientText } from "./gradient-text";
 export { SplitText } from "./split-text";
