@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Anton, Antonio, DM_Sans } from "next/font/google";
 import { LayoutBlur } from "@/components/layout/layout-blur";
+import { ScrollToTop } from "@/components/layout";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -48,6 +49,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased`}
       >
+        <ScrollToTop />
         {children}
         <LayoutBlur />
       </body>
