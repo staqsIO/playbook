@@ -10,7 +10,7 @@ interface IntroVideoProps {
 
 export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen overflow-hidden z-[60]">
       {/* Video Background */}
       <video
         className="absolute top-0 left-0 w-full h-full object-cover"

@@ -65,6 +65,37 @@ export const homePageConfig = {
     },
   ],
 
+  // Flowing Menu
+  flowingMenu: {
+    items: [
+      {
+        link: "#campaign-takeovers",
+        text: "Campaign Takeovers",
+        image: "/images/brands/xbox.png",
+      },
+      {
+        link: "#brand-partnerships",
+        text: "Brand Partnerships",
+        image: "/images/brands/lovb.png",
+      },
+      {
+        link: "#original-content",
+        text: "Original Content",
+        image: "/images/brands/electrolit.png",
+      },
+      {
+        link: "#commercial-production",
+        text: "Commercial Production",
+        image: "/images/brands/whistle-sports.png",
+      },
+      {
+        link: "#live-experiences",
+        text: "Live Experiences",
+        image: "/images/brands/adidas.png",
+      },
+    ],
+  },
+
   // Video Cards
   videoCards: [
     {
