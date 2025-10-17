@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useInView } from "framer-motion";
-import { useRef, ReactNode } from "react";
+import { useRef, ReactNode, useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 
 interface FadeContentProps {
@@ -27,20 +27,25 @@ export function FadeContent({
 }: FadeContentProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-100px" });
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <motion.div
       ref={ref}
-      initial={{
+      initial={mounted ? {
         opacity: 0,
         y,
         filter: blur ? `blur(${blurAmount}px)` : undefined,
-      }}
-      animate={{
+      } : false}
+      animate={mounted ? {
         opacity: isInView ? 1 : 0,
         y: isInView ? 0 : y,
         filter: isInView ? "blur(0px)" : blur ? `blur(${blurAmount}px)` : undefined,
-      }}
+      } : {}}
       transition={{
         duration,
         delay,

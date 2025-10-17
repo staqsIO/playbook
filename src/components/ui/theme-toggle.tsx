@@ -4,8 +4,21 @@ import { useState, useEffect } from "react";
 
 export function ThemeToggle() {
   const [isDark, setIsDark] = useState(true);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+    
+    // Check initial theme
+    if (typeof window !== "undefined") {
+      const root = window.document.documentElement;
+      setIsDark(root.classList.contains("dark"));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
     const root = window.document.documentElement;
     if (isDark) {
       root.classList.add("dark");
@@ -13,6 +26,11 @@ export function ThemeToggle() {
       root.classList.remove("dark");
     }
   }, [isDark]);
+
+  // Don't render until mounted to avoid hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <button

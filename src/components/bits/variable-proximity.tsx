@@ -5,6 +5,9 @@ import { motion } from 'framer-motion';
 
 function useAnimationFrame(callback: () => void) {
   useEffect(() => {
+    // Only run in browser
+    if (typeof window === "undefined") return;
+    
     let frameId: number;
     const loop = () => {
       callback();
@@ -19,6 +22,9 @@ function useMousePositionRef(containerRef: MutableRefObject<HTMLElement | null>)
   const positionRef = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
+    // Only run in browser
+    if (typeof window === "undefined") return;
+    
     const updatePosition = (x: number, y: number) => {
       if (containerRef?.current) {
         const rect = containerRef.current.getBoundingClientRect();

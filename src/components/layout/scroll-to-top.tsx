@@ -4,10 +4,11 @@ import { useEffect } from "react";
 
 export function ScrollToTop() {
   useEffect(() => {
+    // Only run in browser
+    if (typeof window === "undefined") return;
+    
     // Prevent automatic scroll restoration
-    if (typeof window !== "undefined") {
-      window.history.scrollRestoration = "manual";
-    }
+    window.history.scrollRestoration = "manual";
 
     // Scroll to top on component mount
     window.scrollTo(0, 0);
