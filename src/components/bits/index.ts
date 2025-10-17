@@ -1,11 +1,6 @@
-export { AnimatedCard } from "./animated-card";
-export { ClickSpark } from "./click-spark";
 export { FadeIn } from "./fade-in";
 export { FadeContent } from "./fade-content";
 export { FlowingMenu } from "./flowing-menu";
-export { GradientText } from "./gradient-text";
 export { LiquidEther } from "./liquid-ether";
-export { SplitText } from "./split-text";
-export { TextShimmer } from "./text-shimmer";
 export { default as VariableProximity } from "./variable-proximity";
 
