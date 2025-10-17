@@ -27,28 +27,30 @@ export function FadeContent({
 }: FadeContentProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once, margin: "-100px" });
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Small delay to ensure hydration completes
+    const timer = setTimeout(() => setIsClient(true), 50);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <motion.div
       ref={ref}
-      initial={mounted ? {
+      initial={{
         opacity: 0,
         y,
         filter: blur ? `blur(${blurAmount}px)` : undefined,
-      } : false}
-      animate={mounted ? {
+      }}
+      animate={{
         opacity: isInView ? 1 : 0,
         y: isInView ? 0 : y,
         filter: isInView ? "blur(0px)" : blur ? `blur(${blurAmount}px)` : undefined,
-      } : {}}
+      }}
       transition={{
         duration,
-        delay,
+        delay: isClient ? delay : 0,
         ease: "easeOut",
       }}
       className={cn(className)}

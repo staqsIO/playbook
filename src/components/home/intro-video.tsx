@@ -10,13 +10,14 @@ interface IntroVideoProps {
 }
 
 export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
-  const [mounted, setMounted] = useState(false);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
+    // Delay animation start slightly to ensure hydration completes
+    const timer = setTimeout(() => setIsClient(true), 100);
+    return () => clearTimeout(timer);
   }, []);
 
-  // Show content immediately, animate only after mounted
   return (
     <section className="relative w-full h-screen overflow-hidden z-[60] bg-background">
       {/* Video Background */}
@@ -28,9 +29,9 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
         playsInline
         preload="metadata"
         poster="/images/posters/intro.jpg"
-        initial={mounted ? { opacity: 0, scale: 1.1 } : false}
-        animate={mounted ? { opacity: 1, scale: 1 } : {}}
-        transition={{ duration: 1.5, delay: 1, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 1.1 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.5, delay: isClient ? 1 : 0, ease: "easeOut" }}
       >
         {/* WebM provides better compression (30-50% smaller) */}
         <source src={videoSrc.replace('.mp4', '.webm')} type="video/webm" />
@@ -41,9 +42,9 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
       {/* Dark Overlay */}
       <motion.div 
         className="absolute inset-0 bg-black/50"
-        initial={mounted ? { opacity: 0 } : false}
-        animate={mounted ? { opacity: 1 } : {}}
-        transition={{ duration: 1, delay: 1.3 }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: isClient ? 1.3 : 0 }}
       />
 
       {/* Content Container */}
@@ -51,13 +52,13 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
         {/* Logo */}
         <motion.div 
           className="absolute top-8 left-8 md:top-12 md:left-12"
-          initial={mounted ? { opacity: 0, y: -30 } : false}
-          animate={mounted ? { opacity: 1, y: 0 } : {}}
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ 
             type: "spring",
             stiffness: 200,
             damping: 15,
-            delay: 1.5 
+            delay: isClient ? 1.5 : 0
           }}
         >
           <Image
@@ -75,13 +76,13 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
           {/* Text Above Scroll */}
           <motion.h1 
             className="text-white text-center px-4 mb-8"
-            initial={mounted ? { opacity: 0, y: 40 } : false}
-            animate={mounted ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ 
               type: "spring",
               stiffness: 180,
               damping: 18,
-              delay: 1.8 
+              delay: isClient ? 1.8 : 0
             }}
           >
             <div 
@@ -93,13 +94,13 @@ export function IntroVideo({ videoSrc, text }: IntroVideoProps) {
           {/* Scroll Indicator */}
           <motion.div 
             className="animate-bounce"
-            initial={mounted ? { opacity: 0, y: 30 } : false}
-            animate={mounted ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ 
               type: "spring",
               stiffness: 160,
               damping: 20,
-              delay: 2.2 
+              delay: isClient ? 2.2 : 0
             }}
           >
             <div className="w-8 h-12 rounded-full border-2 border-white/60 flex items-start justify-center p-2">
