@@ -59,7 +59,7 @@ export function VideoCard({
           loop
           muted
           playsInline
-          preload="auto"
+          preload="none"
           poster={`/images/posters/${videoSrc.split('/').pop()?.replace('.mp4', '.jpg')}`}
         />
         {/* Dark overlay */}
