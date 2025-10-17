@@ -44,7 +44,7 @@ export function VideoCard({
         className="absolute right-0 bottom-0"
         animate={{
           width: isHovered ? "60%" : "100%",
-          height: isHovered ? "95%" : "100%",
+          height: isHovered ? "100%" : "100%",
         }}
         transition={{
           duration: 0.4,
