@@ -3,30 +3,9 @@ const nextConfig = {
   // Enable compression
   compress: true,
 
-  // Optimize output - generates static HTML/CSS/JS at build time
-  // Remove this line if you need server-side features in the future
-  output: 'export',
-
-  // Disable image optimization for static export (uses Next.js server)
-  // If you remove 'output: export', uncomment the images config below
-  images: {
-    unoptimized: true, // Required for static export
-  },
-
-  // Configure headers for better caching
-  // Note: These work on Vercel/platforms that support them, not in pure static export
+  // Configure headers for better caching on Vercel
   async headers() {
     return [
-      {
-        // Cache all static pages
-        source: '/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=3600, stale-while-revalidate=86400',
-          },
-        ],
-      },
       {
         // Cache video files aggressively (they don't change often)
         source: '/videos/:path*',
@@ -67,6 +46,28 @@ const nextConfig = {
           },
         ],
       },
+      {
+        // Add security headers
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-XSS-Protection',
+            value: '1; mode=block',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+        ],
+      },
     ];
   },
 
@@ -75,8 +76,12 @@ const nextConfig = {
     optimizePackageImports: ['framer-motion', 'lucide-react', 'gsap'],
   },
 
-  // Trailing slash for better static hosting compatibility
-  trailingSlash: true,
+  // Image optimization configuration
+  images: {
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+  },
 };
 
 export default nextConfig;

@@ -21,6 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
+// Optimize for static generation (but allow graceful fallbacks)
+// Vercel will automatically cache and serve as static
+export const dynamic = 'auto'; // Let Next.js decide best strategy
+export const revalidate = false; // Don't revalidate (pure static)
+
 export default function Home() {
   const { introVideo, brands, banners, videoCards, flowingMenu } = homePageConfig;
 
