@@ -45,9 +45,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`dark overscroll-none ${anton.variable} ${antonio.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`dark overscroll-none ${anton.variable} ${antonio.variable} ${dmSans.variable}`} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} font-sans antialiased overscroll-none`}
+        suppressHydrationWarning
       >
         <ScrollToTop />
         {children}
