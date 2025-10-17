@@ -2,6 +2,24 @@ import { IntroVideo, TextBanner, Brands, VideoCard } from "@/components/home";
 import { FlowingMenu, FadeContent } from "@/components/bits";
 import { Navbar } from "@/components/layout";
 import { homePageConfig } from "../../config/home-config";
+import type { Metadata } from "next";
+
+// Static metadata for SEO and caching
+export const metadata: Metadata = {
+  title: "Playbook - Stories That Move Culture",
+  description: "Collaboration with leading brands that shape culture and drive conversations. Campaign takeovers, brand partnerships, and original content.",
+  keywords: ["playbook", "brand partnerships", "campaign takeovers", "creative content", "sports marketing"],
+  openGraph: {
+    title: "Playbook - Stories That Move Culture",
+    description: "Collaboration with leading brands that shape culture and drive conversations.",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Playbook - Stories That Move Culture",
+    description: "Collaboration with leading brands that shape culture and drive conversations.",
+  },
+};
 
 export default function Home() {
   const { introVideo, brands, banners, videoCards, flowingMenu } = homePageConfig;
